@@ -1,0 +1,5 @@
+export const wAVAX_address = '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7'
+
+export const PROJECT_ID = 'ed3252d9c9ab59d135e5524e9953b41e'
+
+export const default_wallet = '0x856b38Bf1e2E367F747DD4d3951DDA8a35F1bF60'
