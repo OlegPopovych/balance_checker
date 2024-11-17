@@ -5,16 +5,23 @@ import { Contract, ethers } from 'ethers';
 import { erc20Abi } from 'viem';
 import { wAVAX_address } from '../constants';
 import { isAddress } from 'ethers/lib/utils';
+import { useAccount } from 'wagmi';
 
 export const useBalance = () => {
 	  const provider = useEthersProvider({ chainId: TARGET_CHAIN.id });
+		const { chain } = useAccount();
 	  const [isLoading, setIsLoading] = useState(false);
 		const [error, setError] = useState('');
 		const [balance, setBalance] = useState('0')
 
 	const getBalance = useCallback(async (walletAddress?: `0x${string}`) => {
 		if (!provider || !walletAddress) return
+		if (chain && chain.id !== TARGET_CHAIN.id) {
+      setError(`Chain ${chain?.name} is not supported`);
+      return;
+    }
 		if (!isAddress(walletAddress)) setBalance('0')
+			
 		setIsLoading(true)
 
 		

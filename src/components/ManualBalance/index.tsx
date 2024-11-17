@@ -1,20 +1,14 @@
 import { useEffect, useState } from 'react';
-import { TARGET_CHAIN } from '../../connectors/wagmiConfig';
-import { useAccount } from 'wagmi';
 import { isAddress } from 'ethers/lib/utils';
 import { useBalance } from '../../hooks/useBalance';
 import { default_wallet } from '../../constants';
 
 export const ManualBalance = () => {
-  const { chain } = useAccount();
   const [walletAddress, setWalletAddress] = useState(default_wallet);
   const [errorAddress, setErrorAddress] = useState('');
   const { balance, getBalance, isLoading, error } = useBalance();
 
   const checkWalletAddress = async (walletAddress: string) => {
-    if (chain && chain.id !== TARGET_CHAIN.id)
-      setErrorAddress(`Chain ${chain?.name} is not supported`);
-
     getBalance(walletAddress as `0x${string}`);
 
     if (isAddress(walletAddress)) {
