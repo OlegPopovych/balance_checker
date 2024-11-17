@@ -33,7 +33,7 @@ function App() {
         Hi, let's check your wAVAX balance on Avalanche chain
       </h1>
       <h2 className='text-center text-[24px]'>
-        You could enter a valid wallet address or connect your wallet
+        You can enter a valid wallet address or connect your wallet
       </h2>
 
       <div className='flex flex-col gap-10 mt-10'>
